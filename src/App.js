@@ -123,7 +123,7 @@ function App() {
           </Box>
           <ButtonGroup>
             <Button colorScheme="green" type="submit" onClick={calculateRoute}>
-              Calculate Route
+              Find Route
             </Button>
             <IconButton
               aria-label="center back"
