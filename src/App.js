@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FaLocationArrow, FaTimes } from "react-icons/fa";
-import { useJsApiLoader, GoogleMap,Marker } from "@react-google-maps/api";
+import { useJsApiLoader, GoogleMap,Marker,Autocomplete } from "@react-google-maps/api";
 import {  useState } from 'react';
 
 function App() {
@@ -68,8 +68,19 @@ function App() {
         zIndex="1"
       >
         <HStack spacing={4}>
-          <Input type="text" placeholder="Origin" />
-          <Input type="text" placeholder="Destination" />
+        <Box flexGrow={1}>
+            <Autocomplete>
+              <Input type='text' placeholder='Origin' />
+            </Autocomplete>
+          </Box>
+          <Box flexGrow={1}>
+            <Autocomplete>
+              <Input
+                type='text'
+                placeholder='Destination'
+              />
+            </Autocomplete>
+          </Box>
           <ButtonGroup>
             <Button colorScheme="pink" type="submit">
               Calculate Route
