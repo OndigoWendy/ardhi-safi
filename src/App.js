@@ -27,6 +27,7 @@ function App() {
   if (!isLoaded) {
     return <SkeletonText />
   }
+  const center = { lat: -1.3020, lng: 36.8222 }
 
   return (
     <Flex
@@ -38,7 +39,13 @@ function App() {
     >
       <Box position='absolute' left={0} top={0} h='100%' w='100%'>
       {/* Google Map Box */}
-      
+      <GoogleMap
+      center={center}
+      zoom={3}
+      mapContainerStyle={{ width: '100%', height: '100%' }}
+>
+          
+        </GoogleMap>
       </Box>
         
       <Box
