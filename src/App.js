@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { FaLocationArrow, FaTimes } from "react-icons/fa";
 import { useJsApiLoader, GoogleMap,Marker } from "@react-google-maps/api";
+import {  useState } from 'react';
 
 function App() {
   //Hook
@@ -19,12 +20,16 @@ function App() {
     libraries: ["places"],
   });
 
+  
+  const center = { lat: -1.302, lng: 36.8222 };
+  const property1 = { lat: -1.402, lng: 36.8232 };
+  const [map, setMap] = useState(/** @type google.maps.Map */ (null))
+  
+  
   if (!isLoaded) {
     return <SkeletonText />;
   }
-  const center = { lat: -1.302, lng: 36.8222 };
-  const property1 = { lat: -1.402, lng: 36.8232 };
-
+  
   return (
     <Flex
       position="relative"
@@ -83,7 +88,10 @@ function App() {
             aria-label="center back"
             icon={<FaLocationArrow />}
             isRound
-            onClick={() => alert(123)}
+            onClick={() => {
+              map.panTo(center)
+              map.setZoom(12)
+            }}
           />
         </HStack>
       </Box>
