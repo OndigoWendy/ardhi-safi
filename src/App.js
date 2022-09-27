@@ -122,7 +122,7 @@ function App() {
             </Autocomplete>
           </Box>
           <ButtonGroup>
-            <Button colorScheme="pink" type="submit" onClick={calculateRoute}>
+            <Button colorScheme="green" type="submit" onClick={calculateRoute}>
               Calculate Route
             </Button>
             <IconButton
