@@ -60,11 +60,11 @@ function App() {
   }
 
   function clearRoute() {
-    setDirectionsResponse(null)
-    setDistance('')
-    setDuration('')
-    originRef.current.value = ''
-    destiantionRef.current.value = ''
+    setDirectionsResponse(null);
+    setDistance("");
+    setDuration("");
+    originRef.current.value = "";
+    destiantionRef.current.value = "";
   }
 
   return (
@@ -87,6 +87,7 @@ function App() {
             mapTypeControl: true,
             fullscreenControl: true,
           }}
+          onLoad={map => setMap(map)}
         >
           <Marker position={center} />
           <Marker position={property1} />
