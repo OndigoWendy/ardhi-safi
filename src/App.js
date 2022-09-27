@@ -10,7 +10,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 import { FaLocationArrow, FaTimes } from "react-icons/fa";
-import { useJsApiLoader, GoogleMap } from "@react-google-maps/api";
+import { useJsApiLoader, GoogleMap,Marker } from "@react-google-maps/api";
 
 function App() {
   //Hook
@@ -23,6 +23,7 @@ function App() {
     return <SkeletonText />;
   }
   const center = { lat: -1.302, lng: 36.8222 };
+  const property1 = { lat: -1.402, lng: 36.8232 };
 
   return (
     <Flex
@@ -36,7 +37,7 @@ function App() {
         {/* Google Map Box */}
         <GoogleMap
           center={center}
-          zoom={3}
+          zoom={10}
           mapContainerStyle={{ width: "100%", height: "100%" }}
           options={{
             zoomControl: true,
@@ -44,7 +45,12 @@ function App() {
             mapTypeControl: true,
             fullscreenControl: true,
           }}
-        ></GoogleMap>
+        >
+          <Marker position={center} />
+          <Marker position={property1} />
+          
+         
+        </GoogleMap>
       </Box>
 
       <Box
