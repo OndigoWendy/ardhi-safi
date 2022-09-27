@@ -11,7 +11,8 @@ import {
 } from '@chakra-ui/react'
 import { FaLocationArrow, FaTimes } from 'react-icons/fa'
 import {
-  useJsApiLoader 
+  useJsApiLoader,
+  GoogleMap
 } from '@react-google-maps/api'
 
 
@@ -19,7 +20,7 @@ function App() {
 
   //Hook
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: 'AIzaSyAvNcw4PwN72DeAzyvhn9AOFh9t2vII9VE',
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     libraries: ['places']
   })
 
