@@ -3,7 +3,6 @@ import {
   Button,
   ButtonGroup,
   Flex,
-  HStack,
   IconButton,
   Input,
   SkeletonText,
@@ -13,12 +12,13 @@ import { FaLocationArrow, FaTimes } from "react-icons/fa";
 import {
   useJsApiLoader,
   GoogleMap,
-  Marker,
+  MarkerF,
   Autocomplete,
   DirectionsRenderer,
 } from "@react-google-maps/api";
 import { useRef, useState } from "react";
 import React from "react";
+
 function App() {
   const [latitude, setLatitude] = React.useState("");
   const [longitude, setLongitude] = React.useState("");
@@ -98,7 +98,7 @@ function App() {
           }}
           onLoad={(map) => setMap(map)}
         >
-          <Marker position={center} />
+          <MarkerF position={center} />
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
           )}
@@ -114,8 +114,8 @@ function App() {
         minW="container.md"
         zIndex="1"
       >
-        <HStack spacing={4}>
-          <Box flexGrow={1}>
+
+          <Box flexGrow={1} padding = "10px">
             <Autocomplete>
               <Input type="text" placeholder="Origin" ref={originRef} />
             </Autocomplete>
@@ -129,8 +129,8 @@ function App() {
               />
             </Autocomplete>
           </Box>
-          <ButtonGroup>
-            <Button colorScheme="green" type="submit" onClick={calculateRoute}>
+          <ButtonGroup padding = "5px">
+            <Button colorScheme="green" type="submit" onClick={calculateRoute} padding = "5px">
               Find Route
             </Button>
             <IconButton
@@ -138,21 +138,20 @@ function App() {
               icon={<FaTimes />}
               onClick={clearRoute}
             />
-          </ButtonGroup>
-        </HStack>
-        <HStack spacing={4} mt={4} justifyContent="space-between">
-          <Text>Distance:{distance} </Text>
-          <Text>Duration:{duration} </Text>
+            <Text  padding = "5px">Distance:{distance} </Text>
+          <Text   padding = "5px">Duration:{duration} </Text>
+
           <IconButton
+             padding = "9px"
             aria-label="center back"
             icon={<FaLocationArrow />}
             isRound
             onClick={() => {
               map.panTo(center);
-              map.setZoom(12);
+              map.setZoom(15);
             }}
           />
-        </HStack>
+          </ButtonGroup>
       </Box>
     </Flex>
   );
