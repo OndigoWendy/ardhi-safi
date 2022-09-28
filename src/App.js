@@ -18,16 +18,25 @@ import {
   DirectionsRenderer,
 } from "@react-google-maps/api";
 import { useRef, useState } from "react";
-
+import React from "react";
 function App() {
+  const [latitude, setLatitude] = React.useState("");
+  const [longitude, setLongitude] = React.useState("");
+
+  React.useEffect(() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      setLatitude(position.coords.latitude);
+      setLongitude(position.coords.longitude);
+    });
+  });
+
   //Hook
   const { isLoaded } = useJsApiLoader({
     googleMapsApiKey: "AIzaSyAvNcw4PwN72DeAzyvhn9AOFh9t2vII9VE",
     libraries: ["places"],
   });
 
-  const center = { lat: -1.302, lng: 36.8222 };
-  const property1 = { lat: -1.402, lng: 36.8232 };
+  const center = { lat: latitude, lng: longitude };
   const [map, setMap] = useState(/** @type google.maps.Map */ (null));
   const [directionsResponse, setDirectionsResponse] = useState(null);
   const [distance, setDistance] = useState("");
@@ -87,10 +96,9 @@ function App() {
             mapTypeControl: true,
             fullscreenControl: true,
           }}
-          onLoad={map => setMap(map)}
+          onLoad={(map) => setMap(map)}
         >
           <Marker position={center} />
-          <Marker position={property1} />
           {directionsResponse && (
             <DirectionsRenderer directions={directionsResponse} />
           )}
