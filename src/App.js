@@ -124,9 +124,6 @@ function App() {
     </Autocomplete>
   </Box>
   <Box padding = "10px" w={["100%", "auto"]}>
-    {/* <Button onClick={calculateRoute}>
-      <FaLocationArrow />
-    </Button> */}
   </Box>
   <Box flexGrow={1} padding = "10px" w={["100%", "50%"]}>
     <Autocomplete>
