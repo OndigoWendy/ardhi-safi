@@ -32,7 +32,7 @@ function App() {
 
   //Hook
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyAvNcw4PwN72DeAzyvhn9AOFh9t2vII9VE",
+    googleMapsApiKey: "",
     libraries: ["places"],
   });
 
@@ -114,21 +114,28 @@ function App() {
         minW="container.md"
         zIndex="1"
       >
+<Flex
+  flexDirection={["column", "row"]}
+  w="100%"
+>
+  <Box flexGrow={1} padding = "10px" w={["100%", "50%"]}>
+    <Autocomplete>
+      <Input type="text" placeholder="Origin" ref={originRef} />
+    </Autocomplete>
+  </Box>
+  <Box padding = "10px" w={["100%", "auto"]}>
+    {/* <Button onClick={calculateRoute}>
+      <FaLocationArrow />
+    </Button> */}
+  </Box>
+  <Box flexGrow={1} padding = "10px" w={["100%", "50%"]}>
+    <Autocomplete>
+      <Input type="text" placeholder="Destination" ref={destiantionRef} />
+    </Autocomplete>
+  </Box>
+</Flex>
 
-          <Box flexGrow={1} padding = "10px">
-            <Autocomplete>
-              <Input type="text" placeholder="Origin" ref={originRef} />
-            </Autocomplete>
-          </Box>
-          <Box flexGrow={1}>
-            <Autocomplete>
-              <Input
-                type="text"
-                placeholder="Destination"
-                ref={destiantionRef}
-              />
-            </Autocomplete>
-          </Box>
+
           <ButtonGroup padding = "5px">
             <Button colorScheme="green" type="submit" onClick={calculateRoute} padding = "5px">
               Find Route
